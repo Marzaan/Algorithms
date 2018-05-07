@@ -1,14 +1,16 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define MAX 100
 struct edge{
     int u,v,w;
+    //for sorting...
      bool operator<(const edge& p) const
     {
         return w < p.w;
     }
 };
 vector<edge>e;
-int pr[100];
+int pr[MAX];
 
 int parent(int x){
     if(pr[x]==x){
@@ -24,13 +26,17 @@ int mst(int n){
         pr[i]=i;
     }
     int sum=0,s=0,a=0;
-    for(int i=0;i<(int)e.size();i++){
+    a=(int)e.size();
+    cout << "Here the graph: ";
+    for(int i=0;i<a;i++){
         int u=parent(e[i].u);
         int v=parent(e[i].v);
+
         if(u!=v){
             pr[u]=v;
             sum++;
             s+=e[i].w;
+            cout << e[i].u << " " << e[i].v << " " << e[i].w << endl;
             if(sum==n-1){
                 break;
             }
@@ -51,7 +57,7 @@ int main ()
         e1.w=w;
         e.push_back(e1);
     }
-    cout << mst(n) <<endl;
+    cout << "The minimum cost is: " << mst(n) <<endl;
     return 0;
 }
 /*
