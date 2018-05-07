@@ -24,7 +24,6 @@ int mst(int n){
         pr[i]=i;
     }
     int sum=0,s=0,a=0;
-    //a=e.size();
     for(int i=0;i<(int)e.size();i++){
         int u=parent(e[i].u);
         int v=parent(e[i].v);
